@@ -677,8 +677,9 @@ static KASUMI_NOCFI int kasumi_dispatch_cmd(unsigned int cmd, void __user *arg)
 				     "vfs: getattr=iop readdir=fop d_path=none getxattr=none\n");
 		written += n;
 		n = scnprintf(kbuf + written, buf_size - written,
-			      "selinuxfs/access,context,proc_attr_current: %s\n",
-			      kasumi_fake_selinuxfs_access_active() ? "shadow fop" : "none");
+			      "selinuxfs/access,context,status,proc_attr_current: access=%s status=%s\n",
+			      kasumi_fake_selinuxfs_access_active() ? "shadow fop" : "none",
+			      kasumi_fake_selinuxfs_status_active() ? "shadow fop" : "none");
 		written += n;
 
 		/* uname */
